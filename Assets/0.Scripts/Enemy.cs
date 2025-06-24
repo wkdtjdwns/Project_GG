@@ -15,14 +15,14 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //SetDestination = ºñµ¿±âÀû
-        //Update = µ¿±âÀû
-        // == Update¿¡¼­ÀÇ Ã¹ ÇÁ·¹ÀÓÀº SetDestination°¡ ¹İ¿µµÇÁö ¾ÊÀ½ -> remainingDistance = 0 -> stoppingDistanceº¸´Ù ÀÛÀ½ -> Attak È£Ãâ
+        //SetDestination = ë¹„ë™ê¸°ì 
+        //Update = ë™ê¸°ì 
+        //Updateì—ì„œì˜ ì²« í”„ë ˆì„ì€ SetDestinationê°€ ë°˜ì˜ë˜ì§€ ì•ŠìŒ -> remainingDistance = 0 -> stoppingDistanceë³´ë‹¤ ì‘ìŒ -> Attak í˜¸ì¶œ
         agent.SetDestination(target.position);
 
-        //pathPending: °æ·Î °è»ê ÁßÀÎÁö ÆÇ´ÜÇÔ.(UpdateÀÇ Ã¹ ÇÁ·¹ÀÓ¿¡¼­ È£Ãâ ÇÏ´Â°É ¹æÁöÇØÁÜ).
-        //PathComplete: ÇöÀç À§Ä¡¿¡¼­ ±× À§Ä¡±îÁö À¯È¿ÇÑ °æ·Î°¡ Á¸ÀçÇÔ
-        //(ÇöÀç À§Ä¡¿¡¼­ ¸ñÀûÁö±îÁö ³²Àº °Å¸®) - (stop À§Ä¡) < 0.1
+        //pathPending: ê²½ë¡œ ê³„ì‚° ì¤‘ì¸ì§€ íŒë‹¨í•¨.(Updateì˜ ì²« í”„ë ˆì„ì—ì„œ í˜¸ì¶œ í•˜ëŠ”ê±¸ ë°©ì§€í•´ì¤Œ).
+        //PathComplete: í˜„ì¬ ìœ„ì¹˜ì—ì„œ ê·¸ ìœ„ì¹˜ê¹Œì§€ ìœ íš¨í•œ ê²½ë¡œê°€ ì¡´ì¬í•¨
+        //(í˜„ì¬ ìœ„ì¹˜ì—ì„œ ëª©ì ì§€ê¹Œì§€ ë‚¨ì€ ê±°ë¦¬) - (stop ìœ„ì¹˜) < 0.1
         if (!agent.pathPending && agent.pathStatus == NavMeshPathStatus.PathComplete
                 && agent.remainingDistance - agent.stoppingDistance < .1f)
         {
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        Debug.Log("¼ºÁØ. ¹Ùº¸.");
+        Debug.Log("ì„±ì¤€. ë°”ë³´.");
 
         yield return null;
     }
