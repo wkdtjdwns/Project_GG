@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        Debug.Log("성준. 바보.");
+        //Debug.Log("Attack");
 
         yield return null;
     }
