@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridCell : MonoBehaviour
 {
     private int posX;
-    private int posY;
+    private int posZ;
 
     // Save a reference to gameObject that gets placed on this cell
     public GameObject objectInThisGridSpace;
@@ -14,16 +14,16 @@ public class GridCell : MonoBehaviour
     public bool isOccupied = false;
 
     // Set the position of this grid cell on the grid
-    public void SetPosition(int x, int y)
+    public void SetPosition(int x, int z)
     {
         posX = x;
-        posY = y;
+        posZ = z;
     }
 
     // Get the position of this grid space on the grid
     public Vector2Int GetPosition()
     {
-        return new Vector2Int(posX, posY);
+        return new Vector2Int(posX, posZ);
     }
 
 }

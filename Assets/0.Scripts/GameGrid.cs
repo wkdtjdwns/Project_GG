@@ -6,7 +6,8 @@ public class GameGrid : MonoBehaviour
 {
     private int height = 15;
     private int width = 15;
-    private float gridSpaceSize = 1.25f;
+    private float gridSpaceSize = 1;
+    //private float gridSpaceSize = 1.25f;
 
     [SerializeField] private GameObject gridCellPrefab;
     private GameObject[,] gameGrid;
@@ -27,15 +28,15 @@ public class GameGrid : MonoBehaviour
         }
 
         // Create the grid
-        for (int y = 0; y < height; y++)
+        for (int z = 0; z < height; z++)
         {
             for (int x = 0; x < width; x++)
             {
                 // Create a new GridSpace
-                gameGrid[x, y] = Instantiate(gridCellPrefab, new Vector3(x * gridSpaceSize, y * gridSpaceSize), Quaternion.identity);
-                gameGrid[x, y].GetComponent<GridCell>().SetPosition(x, y);
-                gameGrid[x, y].transform.parent = transform;
-                gameGrid[x, y].gameObject.name = string.Format("Grid Space ( X: {0}, Y: {1} )", x.ToString(), y.ToString());
+                gameGrid[x, z] = Instantiate(gridCellPrefab, new Vector3(x * gridSpaceSize, 0, z * gridSpaceSize), Quaternion.identity);
+                gameGrid[x, z].GetComponent<GridCell>().SetPosition(x, z);
+                gameGrid[x, z].transform.parent = transform;
+                gameGrid[x, z].gameObject.name = string.Format("Grid Space ( X: {0}, Z: {1} )", x.ToString(), z.ToString());
 
                 yield return new WaitForSeconds(0.025f);
             }
@@ -43,23 +44,23 @@ public class GameGrid : MonoBehaviour
     }
 
     // Get the grid position from wolrd position
-    public Vector2Int GetGridPos(Vector3 pos)
+    public Vector3Int GetGridPos(Vector3 pos)
     {
         int x = Mathf.FloorToInt(pos.x / gridSpaceSize);
-        int y = Mathf.FloorToInt(pos.y / gridSpaceSize);
+        int z = Mathf.FloorToInt(pos.z / gridSpaceSize);
 
         x = Mathf.Clamp(x, 0, width);
-        y = Mathf.Clamp(x, 0, height);
+        z = Mathf.Clamp(x, 0, height);
 
-        return new Vector2Int(x, y);
+        return new Vector3Int(x, 0, z);
     }
 
     // Get the position of a grid position
-    public Vector3 GetPosFromGird(Vector2Int pos)
+    public Vector3 GetPosFromGird(Vector3Int pos)
     {
         float x = pos.x * gridSpaceSize;
-        float y = pos.y * gridSpaceSize;
+        float z = pos.z * gridSpaceSize;
 
-        return new Vector3(x, 0, y);
+        return new Vector3(x, 0, z);
     }
 }
