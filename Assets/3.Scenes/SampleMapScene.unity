@@ -957,16 +957,14 @@ MonoBehaviour:
   moveSpeed: 5
   hp: 100
   turnSpeed: 65
-  jumpPower: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  jumpPower: 5
+  minGroundDistance: 0.7
   minePower: 10
   mineLevel: 1
   dmg: 5
   thirdPersonCamera: {fileID: 497137200}
   firstPersonCamera: {fileID: 677608370}
-  mouseSensitivity: 2
+  mouseSensitivity: 3.5
   cameraVerticalLimit: 80
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
